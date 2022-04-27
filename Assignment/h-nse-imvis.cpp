@@ -6,6 +6,7 @@
 #include "Parameters.h"
 #include "Histogram.h"
 #include "Mirror.h"
+#include "Invert.h"
 
 using namespace cv;
 using namespace std;
@@ -48,6 +49,34 @@ int lab1_opdracht1a_beeld_spiegelen()
 int lab1_opdracht1b_grijswaarden_inverteren()
 {
     // 2. Zwart en wit tinten inverteren
+    Mat src, dst;
+
+    String source_window = "Originele plaatje";
+    String destination_window = "Verticaal gespiegeld";
+
+    // Load original image
+    src = imread(ASSET_DIR "image1.pgm", IMREAD_GRAYSCALE);
+
+    // Show original image
+    namedWindow(source_window, WINDOW_AUTOSIZE);
+    imshow(source_window, src);
+
+    int HEIGHT = src.rows;
+    int WIDTH = src.cols;
+    int temp = 0;
+
+    // Create new image that is the same type as the original image, but without the data
+    dst = Mat::ones(HEIGHT, WIDTH, CV_8U) * 0;
+
+    // Change the image using the Invert class
+    Invert invert(src, dst);
+    invert.process();
+
+    // Show the inverted image
+    namedWindow(destination_window, WINDOW_AUTOSIZE);
+    imshow(destination_window, dst);
+
+    waitKey(0); // Wachten tot een toets gedrukt wordt...
     return 0;
 }
 
