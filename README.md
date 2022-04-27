@@ -26,3 +26,6 @@ Build a specific part of the project
 ```
 cmake --build Example
 ```
+```
+cmake --build Assignment
+```
