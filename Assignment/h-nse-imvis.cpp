@@ -1,17 +1,18 @@
-#include "Parameters.h"
+#define ASSET_DIR "../assets/"
+
 #include "opencv2/highgui.hpp"
-#include <opencv2/videoio.hpp> // Nodig om camera te kunnen gebruiken
+#include <iostream>
+
+#include "Parameters.h"
 #include "Histogram.h"
 #include "Mirror.h"
-#include <iostream>
 
 using namespace cv;
 using namespace std;
 
-#define ASSET_DIR "../assets/"
-
 int lab1_opdracht1a_beeld_spiegelen()
-{ // 1. Spiegelen
+{
+    // 1. Spiegelen
     Mat src, dst;
 
     String source_window = "Originele plaatje"; // Mag je weglaten, alleen imshow("naam",src) is voldoende. Dit maakt het mooier.
@@ -21,7 +22,7 @@ int lab1_opdracht1a_beeld_spiegelen()
     Vergeet de optie IMREAD_GRAYSCALE niet als je een grijswaardenplaatje inleest.
     Met IMREAD_GRAYSCALE krijg je 1 byte per pixel, als je het vergeet krijg je 3 bytes per pixel en dan zie je maar 1/3 van je bronplaatje terug!! */
 
-    src = imread(ASSET_DIR"image1.pgm", IMREAD_GRAYSCALE);
+    src = imread(ASSET_DIR "image1.pgm", IMREAD_GRAYSCALE);
     namedWindow(source_window, WINDOW_AUTOSIZE); // Mag je weglaten, alleen imshow("naam",src) is voldoende.
     imshow(source_window, src);                  // Originele plaatje laten zien.
     int HEIGHT = src.rows;
@@ -45,69 +46,80 @@ int lab1_opdracht1a_beeld_spiegelen()
 }
 
 int lab1_opdracht1b_grijswaarden_inverteren()
-{ // 2. Zwart en wit tinten inverteren
+{
+    // 2. Zwart en wit tinten inverteren
     return 0;
 }
 
 int lab1_opdracht2_contrast_stretch()
-{ // 3. Contrast aanpassen
+{
+    // 3. Contrast aanpassen
     return 0;
 }
 
 int lab2_opdracht2_zoomen()
-{ // 4. Zoomen
+{
+    // 4. Zoomen
     return 0;
 }
 
 int lab2_opdracht2b_roteren()
-{ // 5. Roteren
+{
+    // 5. Roteren
     return 0;
 }
 
 int lab2_opdracht3_affien_mysterie()
-{ // 6. Mysterieuze affiene transformatie
+{
+    // 6. Mysterieuze affiene transformatie
     return 0;
 }
 
 int lab3_opdracht1_hoogdoorlaat()
-{ // 7. Hoogdoorlaat filter
+{
+    // 7. Hoogdoorlaat filter
     return 0;
 }
 
 int lab3_opdracht2a_laagdoorlaat()
-{ // 8. Laagdoorlaat filter
+{
+    // 8. Laagdoorlaat filter
     return 0;
 }
 
 int lab3_opdracht2b_mediaan()
-{ // 9. Mediaan filter
+{
+    // 9. Mediaan filter
     return 0;
 }
 
 int lab4_opdracht3_mieren()
-{ // 10. Mier(en)
+{
+    // 10. Mier(en)
     return 0;
 }
 
 int lab5_opdracht1_gaten_tellen()
-{ // 11. Gaten tellen1
+{
+    // 11. Gaten tellen1
     return 0;
 }
 
 int lab5_opdracht2_labellen()
-{ // 12. Gaten tellen2 - verbeterd
+{
+    // 12. Gaten tellen2 - verbeterd
     return 0;
 }
 
 int main(int argc, const char **argv)
 {
-
     int optie, ret;
+
     do
     {
-        system("Color 0A"); // groene tekst (A) op zwarte achtergrond (0)
-        // system("Color %"); // laat alle mogelijke kleuren zien
+        cout << "\033[1;32m";
         cout << "H-NSE-IMVIS   -   Maak een keuze (geef nummer + druk Enter)" << endl;
+        cout << "\033[0;32m";
         cout << "-1: Demo met camera en histogram" << endl;
         cout << " 1: Lab 1 Opdracht 1a - Spiegelen" << endl;
         cout << " 2: Lab 1 Opdracht 1b - Inverteren" << endl;
@@ -127,9 +139,6 @@ int main(int argc, const char **argv)
 
         switch (optie)
         {
-        case -1:
-            ret = demo_met_camera();
-            break;
         case 0:
             ret = 0;
             break;
