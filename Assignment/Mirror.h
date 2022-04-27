@@ -5,12 +5,13 @@
 using namespace cv;
 using namespace std;
 
-class Mirror {
+class Mirror
+{
 public:
-	Mirror(Mat& src, Mat& dst);
+	Mirror(Mat &src, Mat &dst);
 	void process(void);
+
 private:
 	Mat src, dst;
 	int HEIGHT, WIDTH;
 };
-
