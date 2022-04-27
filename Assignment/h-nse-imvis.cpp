@@ -7,6 +7,7 @@
 #include "Histogram.h"
 #include "Mirror.h"
 #include "Invert.h"
+#include "SmartContrast.h"
 
 using namespace cv;
 using namespace std;
@@ -83,6 +84,48 @@ int lab1_opdracht1b_grijswaarden_inverteren()
 int lab1_opdracht2_contrast_stretch()
 {
     // 3. Contrast aanpassen
+    Mat src, dst;
+
+    String source_window = "Originele plaatje";
+    String destination_window = "Verticaal gespiegeld";
+
+    // Load original image
+    src = imread(ASSET_DIR "Donker.pgm", IMREAD_GRAYSCALE);
+
+    // Show original image
+    namedWindow(source_window, WINDOW_AUTOSIZE);
+    imshow(source_window, src);
+
+    int HEIGHT = src.rows;
+    int WIDTH = src.cols;
+    int temp = 0;
+
+    // Create new image that is the same type as the original image, but without the data
+    dst = Mat::ones(HEIGHT, WIDTH, CV_8U) * 0;
+
+    // Change the image using the Invert class
+    SmartContrast smartContrast(src, dst);
+    smartContrast.process();
+
+    // Show the inverted image
+    namedWindow(destination_window, WINDOW_AUTOSIZE);
+    imshow(destination_window, dst);
+
+    // Show Histograms
+    Histogram srcHistogram("Source", src);
+    Histogram dstHistogram("Processed", dst);
+
+    while (1) {
+        char c = waitKey(5);
+        if (c == 27) {
+            // ESC key pressed
+            break;
+        }
+
+        srcHistogram.update();
+        dstHistogram.update();
+    }
+
     return 0;
 }
 
