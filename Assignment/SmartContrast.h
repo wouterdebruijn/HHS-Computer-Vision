@@ -5,10 +5,10 @@
 using namespace cv;
 using namespace std;
 
-class Mirror
+class SmartContrast
 {
 public:
-	Mirror(Mat &src, Mat &dst);
+	SmartContrast(Mat &src, Mat &dst);
 	void process(void);
 
 private:

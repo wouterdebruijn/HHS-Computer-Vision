@@ -6,14 +6,15 @@
 using namespace cv;
 using namespace std;
 
-class Histogram {
+class Histogram
+{
 public:
-	Histogram(const String& winname, Mat& src);
+	Histogram(const String &winname, Mat &src);
 	void update();
+
 private:
 	int _pixelvalue = 127; // beginwaarde voor trackbar waarde
-	int histSize = 256; // Totaal aantal grijswaarden
+	int histSize = 256;		 // Totaal aantal grijswaarden
 	String winname;
 	Mat src, dst, histI, histO, histImage;
 };
-

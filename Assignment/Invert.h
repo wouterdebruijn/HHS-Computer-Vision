@@ -5,10 +5,10 @@
 using namespace cv;
 using namespace std;
 
-class Mirror
+class Invert
 {
 public:
-	Mirror(Mat &src, Mat &dst);
+	Invert(Mat &src, Mat &dst);
 	void process(void);
 
 private:
