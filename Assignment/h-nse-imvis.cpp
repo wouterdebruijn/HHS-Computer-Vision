@@ -53,7 +53,7 @@ int lab1_opdracht1b_grijswaarden_inverteren()
     Mat src, dst;
 
     String source_window = "Originele plaatje";
-    String destination_window = "Verticaal gespiegeld";
+    String destination_window = "Inverted";
 
     // Load original image
     src = imread(ASSET_DIR "image1.pgm", IMREAD_GRAYSCALE);
@@ -87,7 +87,7 @@ int lab1_opdracht2_contrast_stretch()
     Mat src, dst;
 
     String source_window = "Originele plaatje";
-    String destination_window = "Verticaal gespiegeld";
+    String destination_window = "Contrast Stretched";
 
     // Load original image
     src = imread(ASSET_DIR "Donker.pgm", IMREAD_GRAYSCALE);
