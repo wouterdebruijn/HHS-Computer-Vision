@@ -5,9 +5,9 @@ Practicumhandleiding
 Image Processing & Computer Vision
 
 
-|**Naam**||
+|**Naam**|Wouter de Bruijn|
 | :- | :- |
-|**Lab 1**||
+|**Lab 1**|Finished 2022-04-28|
 |**Lab2**||
 |**Lab3**||
 |**Lab4**||
