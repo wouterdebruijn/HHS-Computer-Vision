@@ -8,6 +8,8 @@
 #include "Mirror.h"
 #include "Invert.h"
 #include "SmartContrast.h"
+#include "Zoom.h"
+#include "Filtering.h"
 
 using namespace cv;
 using namespace std;
@@ -115,9 +117,11 @@ int lab1_opdracht2_contrast_stretch()
     Histogram srcHistogram("Source", src);
     Histogram dstHistogram("Processed", dst);
 
-    while (1) {
+    while (1)
+    {
         char c = waitKey(5);
-        if (c == 27) {
+        if (c == 27)
+        {
             // ESC key pressed
             break;
         }
@@ -132,6 +136,81 @@ int lab1_opdracht2_contrast_stretch()
 int lab2_opdracht2_zoomen()
 {
     // 4. Zoomen
+    // 2. Zwart en wit tinten inverteren
+    Mat src, dst;
+
+    String source_window = "Originele plaatje";
+    String destination_window = "Zoom";
+
+    // Load original image
+    src = imread(ASSET_DIR "Rijswijk.pgm", IMREAD_GRAYSCALE);
+
+    // Show original image
+    namedWindow(source_window, WINDOW_AUTOSIZE);
+    imshow(source_window, src);
+
+    int HEIGHT = src.rows;
+    int WIDTH = src.cols;
+    int temp = 0;
+
+    // Read zoomFactor from user input
+    cout << "Enter zoom factor: ";
+    float zoomFactor;
+    cin >> zoomFactor;
+
+    cout << "Enter x: ";
+    int x;
+    cin >> x;
+
+    cout << "Enter y: ";
+    int y;
+    cin >> y;
+
+    while (1)
+    {
+        char c = waitKey(5);
+        if (c == 27)
+        {
+            // ESC key pressed
+            break;
+        }
+
+        if (c == '+')
+        {
+            zoomFactor += 0.1;
+        }
+        else if (c == '-')
+        {
+            zoomFactor -= 0.1;
+        }
+        else if (c == 'a')
+        {
+            x -= 10;
+        }
+        else if (c == 'd')
+        {
+            x += 10;
+        }
+        else if (c == 'w')
+        {
+            y -= 10;
+        }
+        else if (c == 's')
+        {
+            y += 10;
+        }
+
+        dst = Mat::ones(HEIGHT, WIDTH, CV_8U) * 0;
+
+        // Change the image using the Invert class
+        Zoom zoom(src, dst, zoomFactor, x, y);
+        zoom.process();
+
+        // Show the inverted image
+        namedWindow(destination_window, WINDOW_AUTOSIZE);
+        imshow(destination_window, dst);
+    }
+
     return 0;
 }
 
@@ -150,18 +229,102 @@ int lab2_opdracht3_affien_mysterie()
 int lab3_opdracht1_hoogdoorlaat()
 {
     // 7. Hoogdoorlaat filter
+    Mat src, dst;
+
+    String source_window = "Originele plaatje";
+    String destination_window = "Filtered";
+
+    // Load original image
+    src = imread(ASSET_DIR "joint.jpg", IMREAD_GRAYSCALE);
+
+    // Show original image
+    namedWindow(source_window, WINDOW_AUTOSIZE);
+    imshow(source_window, src);
+
+    int HEIGHT = src.rows;
+    int WIDTH = src.cols;
+    int temp = 0;
+
+    // Create new image that is the same type as the original image, but without the data
+    dst = Mat::ones(HEIGHT, WIDTH, CV_8U) * 0;
+
+    // Change the image using the Invert class
+    Filtering filtering(src, dst);
+    filtering.hdFilter();
+
+    // Show the inverted image
+    namedWindow(destination_window, WINDOW_AUTOSIZE);
+    imshow(destination_window, dst);
+
+    waitKey(0); // Wachten tot een toets gedrukt wordt...
     return 0;
 }
 
 int lab3_opdracht2a_laagdoorlaat()
 {
     // 8. Laagdoorlaat filter
+    Mat src, dst;
+
+    String source_window = "Originele plaatje";
+    String destination_window = "Filtered";
+
+    // Load original image
+    src = imread(ASSET_DIR "whalesp.jpg", IMREAD_GRAYSCALE);
+
+    // Show original image
+    namedWindow(source_window, WINDOW_AUTOSIZE);
+    imshow(source_window, src);
+
+    int HEIGHT = src.rows;
+    int WIDTH = src.cols;
+    int temp = 0;
+
+    // Create new image that is the same type as the original image, but without the data
+    dst = Mat::ones(HEIGHT, WIDTH, CV_8U) * 0;
+
+    // Change the image using the Invert class
+    Filtering filtering(src, dst);
+    filtering.ldFilter();
+
+    // Show the inverted image
+    namedWindow(destination_window, WINDOW_AUTOSIZE);
+    imshow(destination_window, dst);
+
+    waitKey(0); // Wachten tot een toets gedrukt wordt...
     return 0;
 }
 
 int lab3_opdracht2b_mediaan()
 {
     // 9. Mediaan filter
+    Mat src, dst;
+
+    String source_window = "Originele plaatje";
+    String destination_window = "Filtered";
+
+    // Load original image
+    src = imread(ASSET_DIR "whalesp.jpg", IMREAD_GRAYSCALE);
+
+    // Show original image
+    namedWindow(source_window, WINDOW_AUTOSIZE);
+    imshow(source_window, src);
+
+    int HEIGHT = src.rows;
+    int WIDTH = src.cols;
+    int temp = 0;
+
+    // Create new image that is the same type as the original image, but without the data
+    dst = Mat::ones(HEIGHT, WIDTH, CV_8U) * 0;
+
+    // Change the image using the Invert class
+    Filtering filtering(src, dst);
+    filtering.medianFilter();
+
+    // Show the inverted image
+    namedWindow(destination_window, WINDOW_AUTOSIZE);
+    imshow(destination_window, dst);
+
+    waitKey(0); // Wachten tot een toets gedrukt wordt...
     return 0;
 }
 
