@@ -5,15 +5,15 @@
 using namespace cv;
 using namespace std;
 
-class Zoom
+class Filtering
 {
 public:
-	Zoom(Mat &src, Mat &dst, float zoomFactor, int x, int y);
-	void process(void);
+	Filtering(Mat &src, Mat &dst);
+	void hdFilter(void);
+	void ldFilter(void);
+	void medianFilter(void);
 
 private:
 	Mat src, dst;
 	int HEIGHT, WIDTH;
-	float zoomFactor;
-	int x,y;
 };
