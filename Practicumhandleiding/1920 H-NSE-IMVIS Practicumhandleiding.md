@@ -8,8 +8,8 @@ Image Processing & Computer Vision
 |**Naam**|Wouter de Bruijn|
 | :- | :- |
 |**Lab 1**|Finished 2022-04-28|
-|**Lab2**||
-|**Lab3**||
+|**Lab2**|Finished|
+|**Lab3**|Finished|
 |**Lab4**||
 |**Lab5**||
 
