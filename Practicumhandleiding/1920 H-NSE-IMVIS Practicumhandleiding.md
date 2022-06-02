@@ -345,7 +345,7 @@ Laat beide resultaten geopend staan.
 
 
 
-Gekozen: drempelwaarde: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ 
+Gekozen: drempelwaarde: 120\
 
 
 

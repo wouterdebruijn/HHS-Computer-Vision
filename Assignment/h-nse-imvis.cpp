@@ -10,6 +10,7 @@
 #include "SmartContrast.h"
 #include "Zoom.h"
 #include "Filtering.h"
+#include "Mier.h"
 
 using namespace cv;
 using namespace std;
@@ -331,6 +332,20 @@ int lab3_opdracht2b_mediaan()
 int lab4_opdracht3_mieren()
 {
     // 10. Mier(en)
+    Mat src, src2;
+    src = imread(ASSET_DIR "ants1_bw.pgm", IMREAD_GRAYSCALE);
+    src2 = imread(ASSET_DIR "ants2_bw.pgm", IMREAD_GRAYSCALE);
+
+    Mat dst = Mat::ones(src.rows, src.cols, CV_8U) * 0;
+    Mier mier(src, src2, dst);
+
+    mier.process();
+
+    namedWindow("Result", WINDOW_AUTOSIZE);
+    imshow("Result", dst);
+
+    waitKey(0);
+
     return 0;
 }
 

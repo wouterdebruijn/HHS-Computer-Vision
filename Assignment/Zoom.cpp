@@ -60,8 +60,8 @@ void affineTransformationInverted(Mat &src, Mat &dst, float matrix[3][3])
 void Zoom::process(void)
 {
     // Calculated the target X, this makes the provided x centered into the new image.
-    int targetX = x - ((WIDTH / zoomFactor) / 2);
-    int targetY = y - ((HEIGHT / zoomFactor) / 2);
+    float targetX = x - ((WIDTH / zoomFactor) / 2);
+    float targetY = y - ((HEIGHT / zoomFactor) / 2);
 
     float move_matrix[3][3] = {
         {1, 0, -targetY},
