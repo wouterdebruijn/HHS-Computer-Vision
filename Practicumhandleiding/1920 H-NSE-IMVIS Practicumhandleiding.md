@@ -10,7 +10,7 @@ Image Processing & Computer Vision
 |**Lab 1**|Finished 2022-04-28|
 |**Lab2**|Finished|
 |**Lab3**|Finished|
-|**Lab4**||
+|**Lab4**|Finished|
 |**Lab5**||
 
 Versie  1920-1
