@@ -380,6 +380,9 @@ int lab5_opdracht2_labellen()
     GapsNext gapsNext(src, dst);
     gapsNext.process();
 
+    namedWindow("Source", WINDOW_AUTOSIZE);
+    imshow("Source", src);
+
     waitKey(0);
 
     return 0;

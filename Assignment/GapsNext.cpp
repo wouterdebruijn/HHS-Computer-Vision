@@ -15,9 +15,10 @@ GapsNext::GapsNext(Mat &src, Mat &dst)
 
 uint8_t GapsNext::labelPixel(uint16_t h, uint16_t w)
 {
+    // cout << "labelPixel(" << h << ", " << w << ")" << endl;
     int16_t i, j;
 
-    if ((src.at<uchar>(h, w) == 255) && (dst.at<uchar>(h, w) == 0))
+    if ((src.at<uchar>(h, w) == 255) && (dst.at<uchar>(h, w) == 255))
     {
         dst.at<uchar>(h, w) = label;
         for (i = -1; i < 2; i++)
@@ -43,20 +44,22 @@ void GapsNext::process(void)
     for (h = 0; h < HEIGHT; h++)
         for (w = 0; w < WIDTH; w++)
         {
-            dst.at<uchar>(h, w) = 0;
+            dst.at<uchar>(h, w) = 255;
         }
 
     label = 0;
 
-    for (h = 1; h < HEIGHT -1; h++)
+    for (h = 0; h < HEIGHT; h++)
     {
-        for (w = 1; w < WIDTH - 1; w++)
+        for (w = 0; w < WIDTH; w++)
         {
             if ((labelPixel(h, w) != 0) && (label < 254))
             {
                 label++;
-                cout << "Label: " << label << endl;
             }
         }
     }
+
+    cout << "Label: " << label << endl;
+
 }

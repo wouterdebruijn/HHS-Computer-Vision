@@ -11,11 +11,11 @@ public:
 	GapsNext(Mat &src, Mat &dst);
 	void process(void);
 	uint8_t labelPixel(uint16_t h, uint16_t w);
+	int label;
 
 private:
 	Mat src, dst;
 	int HEIGHT, WIDTH;
-	uint8_t label;
 	int internalEdges[4][2][2] = {
 		{{0, 255},
 		 {255, 255}},
