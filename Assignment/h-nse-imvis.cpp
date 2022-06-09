@@ -11,6 +11,8 @@
 #include "Zoom.h"
 #include "Filtering.h"
 #include "Mier.h"
+#include "Gaps.h"
+#include "GapsNext.h"
 
 using namespace cv;
 using namespace std;
@@ -352,12 +354,34 @@ int lab4_opdracht3_mieren()
 int lab5_opdracht1_gaten_tellen()
 {
     // 11. Gaten tellen1
+    Mat src, src2;
+    src = imread(ASSET_DIR "chassis1.pgm", IMREAD_GRAYSCALE);
+
+    namedWindow("Source", WINDOW_AUTOSIZE);
+    imshow("Source", src);
+
+    Mat dst = Mat::ones(src.rows, src.cols, CV_8U) * 0;
+    Gaps gaps(src, dst);
+
+    gaps.process();
+    waitKey(0);
+
     return 0;
 }
 
 int lab5_opdracht2_labellen()
 {
     // 12. Gaten tellen2 - verbeterd
+    Mat src;
+    src = imread(ASSET_DIR "chassis2.pgm", IMREAD_GRAYSCALE);
+
+    Mat dst = Mat::ones(src.rows, src.cols, CV_8U) * 0;
+
+    GapsNext gapsNext(src, dst);
+    gapsNext.process();
+
+    waitKey(0);
+
     return 0;
 }
 

@@ -1,2 +1,2 @@
 #pragma once
-#define LEVELS 256 // aantal grijswaarden
+#define LEVELS 255 // aantal grijswaarden
